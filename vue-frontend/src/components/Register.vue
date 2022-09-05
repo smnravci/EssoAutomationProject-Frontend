@@ -15,8 +15,6 @@
                 <label for="psw"><b>Password</b></label>
                 <input v-model="user.password" ref="psw" type="password" placeholder="Enter Password" name="psw"/>
 
-                <label for="psw-repeat"><b>Repeat Password</b></label>
-                <input type="password" v-model="user.repeatPassword" placeholder="Repeat Password" name="psw-repeat"/>
 
                 <label>
                     <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px" />Remember me
@@ -44,8 +42,7 @@ export default({
                 userId:0,
                 username:"",
                 email:"",
-                password:"",
-                repeatPassword:""
+                password:""
             },
         }
     },
@@ -55,7 +52,7 @@ export default({
         },
         signup(){
                 if(this.checkValidation()){
-                    axios.post(this.hostname+ "api/user/registration/", this.user)
+                    this.$ajax.post(this.hostname+ "api/user/registration/", this.user)
                     .then(response => {
                         if(response.data.userId > 0){
                             Swal.fire("Successfully registered")
@@ -92,11 +89,6 @@ export default({
             if(!this.user.password){
                 this.$refs.psw.focus();
                 Swal.fire("Give password");
-                return;
-            }
-            if(this.user.password != this.user.repeatPassword){
-                this.$refs.psw.focus();
-                Swal.fire("Password and repeat password mismatched");
                 return;
             }
             return true;

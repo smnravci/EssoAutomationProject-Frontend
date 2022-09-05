@@ -55,13 +55,13 @@ router.beforeEach((to,from,next)=>{
     next();
     return;
   }
-  // if(authRequired){
-  //   next('/login');
-  //   return;
-  // }else{
-  //   next();
-  //   return;
-  // }
+  if(authRequired){
+    next('/login');
+    return;
+  }else{
+    next();
+    return;
+  }
 });
 
 export default router;
