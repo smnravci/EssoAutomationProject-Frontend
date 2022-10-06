@@ -4,7 +4,6 @@
             <div class="card-body">
                 <h1>Sign Up</h1>
                 <p>Please fill all the fields to create an account.</p>
-                <hr>
 
                 <label for="username"><b>Username</b></label>
                 <input v-model="user.username" ref="username" type="text" placeholder="Enter Username" name="username"/>
@@ -15,12 +14,11 @@
                 <label for="psw"><b>Password</b></label>
                 <input v-model="user.password" ref="psw" type="password" placeholder="Enter Password" name="psw"/>
 
-
                 <label>
-                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px" />Remember me
+                    <input type="checkbox"   name="remember" style="margin-bottom:15px"/> Remember me
                 </label>
 
-                <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms&Privacy</a>.</p>
+                <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
                 <div class="clearfix">
                     <button class="cancelbtn" type="button" v-on:click="back">Cancel</button>
@@ -32,14 +30,12 @@
 </template>
 
 <script>
-import axios from 'axios';
 import Swal from 'sweetalert2';
 
 export default({
     data(){
         return{
             user:{
-                userId:0,
                 username:"",
                 email:"",
                 password:""
@@ -52,15 +48,15 @@ export default({
         },
         signup(){
                 if(this.checkValidation()){
-                    this.$ajax.post(this.hostname+ "api/user/registration/", this.user)
+                    this.$ajax.post("Users/Registration/", {Username:this.user.username, Password:this.user.password, Email:this.user.email})
                     .then(response => {
-                        if(response.data.userId > 0){
+                        if(response.data){
                             Swal.fire("Successfully registered")
                             .then(()=>{
                                 this.back();
                             });
                         }else{
-                            Swal.fire("Error: Something went wrong.");
+                            Swal.fire("Error: Something went wrong. Please try again later(Dont forget that you cant create an account with an existing email address!");
                         }
                     })
                     .catch(error=> {
@@ -73,22 +69,22 @@ export default({
         checkValidation(){
             if(!this.user.username){
                     this.$refs.username.focus();
-                    Swal.fire("Give username");
+                    Swal.fire("Give username!");
                     return;
                 }
             if(!this.user.email){
                     this.$refs.email.focus();
-                    Swal.fire("Give password");
+                    Swal.fire("Give password!");
                     return;
                 }
             if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/).test(this.user.email)){
                 this.$refs.email.focus();
-                Swal.fire("Invalid email");
+                Swal.fire("Give a correct email!");
                 return;
             }
             if(!this.user.password){
                 this.$refs.psw.focus();
-                Swal.fire("Give password");
+                Swal.fire("Give password!");
                 return;
             }
             return true;

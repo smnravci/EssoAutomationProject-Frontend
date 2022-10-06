@@ -3,6 +3,7 @@ import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
 import Cities from '../components/Cities.vue'
 import Countries from '../components/Countries.vue'
+import Dashboard from '../components/Dashboard.vue'
 
 const Home = () => import('../views/HomeView.vue')
 const About = () => import('../views/AboutView.vue')
@@ -13,32 +14,37 @@ const router = createRouter({
     {
       path: '/login',
       name: 'Login',
-      component: Login,
+      component: Login
     },
     {
       path: '/register',
       name: 'Register',
-      component: Register,
+      component: Register
     },
     {
       path: '/cities',
       name: 'Cities',
-      component: Cities,
+      component: Cities
     },
     {
       path: '/countries',
       name: 'Countries',
-      component: Countries,
+      component: Countries
     },
     {
       path: '/about',
       name: 'About',
-      component: About,
+      component: About
     },
     {
       path: '/',
       name: 'Home',
-      component: Home,
+      component: Home
+    },
+    {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard
     }
   ]
 });
@@ -49,13 +55,6 @@ router.beforeEach((to,from,next)=>{
   const loggedIn = localStorage.getItem('token')
 
   if(authRequired && !loggedIn){
-    next('/login');
-    return;
-  }else{
-    next();
-    return;
-  }
-  if(authRequired){
     next('/login');
     return;
   }else{

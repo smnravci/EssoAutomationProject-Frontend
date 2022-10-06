@@ -1,5 +1,4 @@
 <template>
-  <h1>{{message}}</h1>
   <router-view></router-view>
 </template>
 
@@ -11,7 +10,6 @@ export default{
   },
   data(){
     return{
-      message:"Hello"
     }
   }
 }

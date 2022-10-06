@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="col-md-12">
         <div class="container">
             <h3 class="e-shop-font">Login Page</h3>
             <div class="card">
@@ -33,8 +33,8 @@ export default{
         data(){
                 return{
                     user:{
-                        username:null,
-                        password:null
+                        username:"",
+                        password:""
                     },
                 }
             },
@@ -47,19 +47,21 @@ export default{
                     this.$ajax.post("Users/Login", {Username:this.user.username, Password:this.user.password})
                     .then(response => {
                         if(response.data.hasError){
-                            Swal.fire("Invalid");
+                            Swal.fire("Invalid username or password!");
                             this.user.username="";
                             this.user.password="";
                         }
                         else if(response.data.token){
                             localStorage.setItem('token', JSON.stringify(response.data));
-                            this.$router.push("/countries");
+                            response.data.token="";
+                            localStorage.setItem('user', JSON.stringify(response.data));
+                            this.$router.push("/dashboard");
                         }
                         
                     })
                     .catch(error=> {
-                        if(error){
-                            Swal.fire();
+                        if(error.response){
+                            Swal.fire(error.response.data);
                         }
                     });
                 }
@@ -67,12 +69,12 @@ export default{
             checkValidation(){
                 if(!this.user.username){
                     this.$refs.username.focus();
-                    Swal.fire("Give username");
+                    Swal.fire("Give username!");
                     return;
                 }
                 if(!this.user.password){
-                    this.$refs.password.focus();
-                    Swal.fire("Give password");
+                    this.$refs.psw.focus();
+                    Swal.fire("Give password!");
                     return;
                 }
                 return true;
