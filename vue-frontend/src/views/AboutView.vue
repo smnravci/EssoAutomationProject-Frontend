@@ -1,9 +1,4 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <div class="wrapper">About View</div>
+  <h2>About View</h2>
 </template>
 
-<style scoped lang="scss">
-</style>

@@ -56,7 +56,7 @@ export default({
                                 this.back();
                             });
                         }else{
-                            Swal.fire("Error: Something went wrong. Please try again later(Dont forget that you cant create an account with an existing email address!");
+                            Swal.fire("Error: Something went wrong.(Do not forget that you cannot create an account with an existing email address!");
                         }
                     })
                     .catch(error=> {

@@ -1,5 +1,8 @@
 <template>
-  <router-view></router-view>
+  <router-view>
+      <router-link to="/">Home</router-link>
+      <router-link to="/cityandcountry">Cities and Countries</router-link>
+  </router-view>
 </template>
 
 <script>
@@ -13,4 +16,4 @@ export default{
     }
   }
 }
-</script>
+</script> 
