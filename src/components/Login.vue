@@ -1,22 +1,19 @@
 <template>
-    <div class="col-md-12">
         <div class="container">
-            <h3 class="e-shop-font">Login Page</h3>
             <div class="card">
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input v-model="user.username" ref="username" type="text" class="form-control" placeholder="Enter username" name="username"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd">Password:</label>
-                        <input v-model="user.password" ref="psw" type="password" class="form-control" placeholder="Enter password" name="pwd"/>
-                    </div>
-                    <div class="form-group form-check">
+                <div class="card-body" >
+                    <h1>Login Page</h1>
+
+                        <label for="username"><b>Username</b></label>
+                        <input v-model="user.username" ref="username" type="text" placeholder="Enter username" name="username"/>
+                
+                        <label for="pwd"><b>Password</b></label>
+                        <input v-model="user.password" ref="psw" type="password" placeholder="Enter password" name="pwd"/>
+
                         <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" name="remember"/>Remember me
+                            <input class="form-check-input" type="checkbox" name="remember" style="margin-bottom:15px"/>Remember me
                         </label>
-                    </div>
+        
                     <div class="clearfix">
                         <button type="button" class="signin" v-on:click="login">Sign in</button>
                         <button type="button" class="signup" v-on:click="signup">Sign up</button>
@@ -24,20 +21,19 @@
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
 import Swal from 'sweetalert2';
 export default{
         data(){
-                return{
-                    user:{
-                        username:"",
-                        password:""
-                    },
-                }
-            },
+            return{
+                user:{
+                    username:"",
+                    password:""
+                },
+            }
+        },
         methods:{
             signup(){
                 this.$router.push({name:'Register'});
@@ -55,7 +51,7 @@ export default{
                             localStorage.setItem('token', JSON.stringify(response.data));
                             response.data.token="";
                             localStorage.setItem('user', JSON.stringify(response.data));
-                            this.$router.push("/dashboard");
+                            this.$router.push("/cityandcountry");
                         }
                         
                     })
@@ -84,26 +80,42 @@ export default{
 </script>
 
 <style scoped>
+
     .container{
-        max-width: 360px;
+        width: 35%;
+        height: -50px;
+        padding: 120px 70px 140px 120px;
     }
+    input[type=text], input[type=password]{
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+    }
+    input[type=text]:focus, input[type=password]:focus{
+        background-color: #ddd;
+        outline: none;
+    }
+
     button{
         background-color: rgb(26, 15, 97);
+        width: 60%;
         color: rgb(254, 254, 254);
         border: 2px black; 
         border-radius: 30px;       
-        padding: 14px 46px;    
+        padding: 15px 35px;    
         text-align: center;    
         text-decoration: none;    
         display: inline-block;    
-        font-size: 16px;    
-        margin: 4px 2px;    
+        font-size: 18px;  
+        margin: 5px 65px;    
         cursor: pointer;
         transition-duration: 0.3s;
     }
     button:hover{
         background-color: lightblue;
     }
-    
     
 </style>

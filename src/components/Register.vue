@@ -32,7 +32,7 @@
 <script>
 import Swal from 'sweetalert2';
 
-export default({
+export default{
     data(){
         return{
             user:{
@@ -90,14 +90,14 @@ export default({
             return true;
         }
     }
-})
-
+}
 </script>
 
 <style scoped>
     .container{
-        width: 25%;
-        padding: 15px;
+        width: 35%;
+        height: -30px;
+        padding: 50px 30px 50px 80px;
     }
     input[type=text], input[type=password], input[type=email]{
         width: 100%;
@@ -114,16 +114,16 @@ export default({
 
     button{
         background-color: rgb(26, 15, 97);
-        width: 47%;
+        width: 60%;
         color: rgb(254, 254, 254);
         border: 2px black; 
         border-radius: 30px;       
-        padding: 14px 46px;    
+        padding: 15px 35px;    
         text-align: center;    
         text-decoration: none;    
         display: inline-block;    
-        font-size: 16px;    
-        margin: 4px 2px;    
+        font-size: 18px;  
+        margin: 5px 65px;    
         cursor: pointer;
         transition-duration: 0.3s;
     }
