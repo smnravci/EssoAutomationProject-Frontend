@@ -15,8 +15,8 @@
                         </label>
         
                     <div class="clearfix">
-                        <button type="button" class="signin" v-on:click="login">Sign in</button>
-                        <button type="button" class="signup" v-on:click="signup">Sign up</button>
+                        <button type="button" class="signin" v-on:click="login">Log in</button>
+                        <button type="button" class="register" v-on:click="register">Register</button>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@ export default{
             }
         },
         methods:{
-            signup(){
+            register(){
                 this.$router.push({name:'Register'});
             },
             login(){
