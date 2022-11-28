@@ -15,8 +15,8 @@
                         </label>
         
                     <div class="clearfix">
-                        <button type="button" class="signin" v-on:click="login">Log in</button>
-                        <button type="button" class="register" v-on:click="register">Register</button>
+                        <button class="button" @click="login()">Log in</button>
+                        <button class="button" @click="register()">Register</button>
                     </div>
                 </div>
             </div>

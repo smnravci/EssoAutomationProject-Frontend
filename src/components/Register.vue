@@ -21,8 +21,8 @@
                 <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
                 <div class="clearfix">
-                    <button class="cancelbtn" type="button" v-on:click="back">Cancel</button>
-                    <button class="signupbtn" type="submit" v-on:click="signup">Sign Up</button>
+                    <button class="button" @click="back()">Log in</button>
+                    <button class="button" @click="signup()">Register</button>
                 </div>
             </div>
         </div>

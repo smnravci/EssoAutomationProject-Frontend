@@ -2,7 +2,7 @@
     <div class="container">
       <div class="card">
         <div class="card-body">
-          <h5>Welcome to Esso Otomation Application Project! First Log in or If you do not have an account, please register to see cities and countries.</h5>
+          <h5>Welcome to the Esso Otomation Application Project! First Log in or If you do not have an account, please register to see cities and countries.</h5>
             <div class="clearfix">
               <button class="button" @click="login()">Log in</button>
               <button class="button" @click="register()">Register</button>
