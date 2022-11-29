@@ -16,7 +16,6 @@
         
                     <div class="clearfix">
                         <button class="button" @click="login()">Log in</button>
-                        <button class="button" @click="register()">Register</button>
                     </div>
                 </div>
             </div>
@@ -35,9 +34,6 @@ export default{
             }
         },
         methods:{
-            register(){
-                this.$router.push({name:'Register'});
-            },
             login(){
                 if(this.checkValidation()){
                     this.$ajax.post("Users/Login", {Username:this.user.username, Password:this.user.password})
@@ -82,9 +78,9 @@ export default{
 <style scoped>
 
     .container{
-        width: 35%;
+        width: 30%;
         height: -50px;
-        padding: 120px 70px 140px 120px;
+        padding: 140px 30px 180px 30px;
     }
     input[type=text], input[type=password]{
         width: 100%;

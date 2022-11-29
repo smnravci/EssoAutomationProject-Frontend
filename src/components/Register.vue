@@ -2,7 +2,7 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <h1>Sign Up</h1>
+                <h1>Register</h1>
                 <p>Please fill all the fields to create an account.</p>
 
                 <label for="username"><b>Username</b></label>
@@ -21,7 +21,6 @@
                 <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
                 <div class="clearfix">
-                    <button class="button" @click="back()">Log in</button>
                     <button class="button" @click="signup()">Register</button>
                 </div>
             </div>
@@ -43,9 +42,6 @@ export default{
         }
     },
     methods: {
-        back(){
-            this.$router.push({name:'Login'});
-        },
         signup(){
                 if(this.checkValidation()){
                     this.$ajax.post("Users/Registration/", {Username:this.user.username, Password:this.user.password, Email:this.user.email})
