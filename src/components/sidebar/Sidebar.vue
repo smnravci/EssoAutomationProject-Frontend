@@ -9,6 +9,7 @@
         <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
         <SidebarLink to="/login" icon="fa fa-sign-in">Login</SidebarLink>
         <SidebarLink to="/register" icon="fa fa-registered">Register</SidebarLink>
+        <SidebarLink to="/about" icon="fa fa-info-circle">About</SidebarLink>
 
         <span class="collapse-icon" 
               :class="{'rotate-180': collapsed }"
