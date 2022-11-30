@@ -19,7 +19,7 @@
     "vue-axios": "^3.4.1",
     "vue-carousel-3d": "^1.0.1",
     "vue-router": "^4.0.13",
-    "vuetify": "^2.6.9"
+    "vuetify": "^2.6.12"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.3",

@@ -1,15 +1,17 @@
 <template>
-  <Sidebar/>
+  <Sidebar>
   <div :style="{ 'margin-left' : sidebarWidth }">
-  <router-view/>
   </div>
+  </Sidebar>
+  <RouterView />
 </template>
 
 <script>
+import { RouterView } from 'vue-router';
 import Sidebar from './components/sidebar/Sidebar.vue'
 import { sidebarWidth } from './components/sidebar/state'
 export default{
-  components:{ Sidebar },
+  components:{ Sidebar, RouterView },
   setup(){
     return { sidebarWidth }
   }
@@ -19,6 +21,5 @@ export default{
 <style>
   #app{
     background-image: url("./assets/world.jpg");
-
   }
 </style>
