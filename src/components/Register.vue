@@ -93,7 +93,7 @@ export default{
     .container{
         width: 35%;
         height: -30px;
-        padding: 50px 30px 50px 80px;
+        padding: 70px 30px 50px 80px;
     }
     input[type=text], input[type=password], input[type=email]{
         width: 100%;
