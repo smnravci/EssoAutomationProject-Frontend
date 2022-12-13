@@ -1,82 +1,81 @@
 <template>
-        <div class="container">
-            <div class="card">
-                <div class="card-body" >
-                    <h1>Login Page</h1>
+    <div class="container">
+        <div class="card">
+            <div class="card-body" >
+                <h1>Login Page</h1>
 
-                        <label for="username"><b>Username</b></label>
-                        <input v-model="user.username" ref="username" type="text" placeholder="Enter username" name="username"/>
-                
-                        <label for="pwd"><b>Password</b></label>
-                        <input v-model="user.password" ref="psw" type="password" placeholder="Enter password" name="pwd"/>
+                    <label for="username"><b>Username</b></label>
+                    <input v-model="user.username" ref="username" type="text" placeholder="Enter username" name="username"/>
+            
+                    <label for="pwd"><b>Password</b></label>
+                    <input v-model="user.password" ref="psw" type="password" placeholder="Enter password" name="pwd"/>
 
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" name="remember" style="margin-bottom:15px"/>Remember me
-                        </label>
-        
-                    <div class="clearfix">
-                        <button class="button" @click="login()">Log in</button>
-                    </div>
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" name="remember" style="margin-bottom:15px"/>Remember me
+                    </label>
+    
+                <div class="clearfix">
+                    <button class="button" @click="login()">Log in</button>
                 </div>
             </div>
         </div>
+    </div>
 </template>
 
 <script>
 import Swal from 'sweetalert2';
 export default{
-        data(){
-            return{
-                user:{
-                    username:"",
-                    password:""
-                },
+    data(){
+        return{
+            user:{
+                username:"",
+                password:""
+            },
+        }
+    },
+    methods:{
+        login(){
+            if(this.checkValidation()){
+                this.$ajax.post("Users/Login", {Username:this.user.username, Password:this.user.password})
+                .then(response => {
+                    if(response.data.hasError){
+                        Swal.fire("Invalid username or password!");
+                        this.user.username="";
+                        this.user.password="";
+                    }
+                    else if(response.data.token){
+                        localStorage.setItem('token', JSON.stringify(response.data.token));
+                        response.data.token="";
+                        localStorage.setItem('user', JSON.stringify(response.data));
+                        this.$router.push("/dashboard");
+                    }
+                    
+                })
+                .catch(error=> {
+                    if(error.response){
+                        Swal.fire(error.response.data);
+                    }
+                });
             }
         },
-        methods:{
-            login(){
-                if(this.checkValidation()){
-                    this.$ajax.post("Users/Login", {Username:this.user.username, Password:this.user.password})
-                    .then(response => {
-                        if(response.data.hasError){
-                            Swal.fire("Invalid username or password!");
-                            this.user.username="";
-                            this.user.password="";
-                        }
-                        else if(response.data.token){
-                            localStorage.setItem('token', JSON.stringify(response.data));
-                            response.data.token="";
-                            localStorage.setItem('user', JSON.stringify(response.data));
-                            this.$router.push("/cityandcountry");
-                        }
-                        
-                    })
-                    .catch(error=> {
-                        if(error.response){
-                            Swal.fire(error.response.data);
-                        }
-                    });
-                }
-            },
-            checkValidation(){
-                if(!this.user.username){
-                    this.$refs.username.focus();
-                    Swal.fire("Give username!");
-                    return;
-                }
-                if(!this.user.password){
-                    this.$refs.psw.focus();
-                    Swal.fire("Give password!");
-                    return;
-                }
-                return true;
+        checkValidation(){
+            if(!this.user.username){
+                this.$refs.username.focus();
+                Swal.fire("Give username!");
+                return;
             }
+            if(!this.user.password){
+                this.$refs.psw.focus();
+                Swal.fire("Give password!");
+                return;
+            }
+            return true;
         }
     }
+}
 </script>
 
 <style scoped>
-
     .container{
         width: 30%;
         height: -50px;
@@ -94,7 +93,6 @@ export default{
         background-color: #ddd;
         outline: none;
     }
-
     button{
         background-color: rgb(26, 15, 97);
         width: 60%;
@@ -113,5 +111,5 @@ export default{
     button:hover{
         background-color: lightblue;
     }
-    
+
 </style>

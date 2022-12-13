@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
-import CityAndCountry from '../components/CityAndCountry.vue'
+import Layout from '../components/Layout.vue'
+import Dashboard from '../components/Dashboard.vue'
+import City from '../components/City.vue'
+import Country from '../components/Country.vue'
 
 const Home = () => import('../views/HomeView.vue')
 const About = () => import('../views/AboutView.vue')
@@ -30,9 +33,24 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/cityandcountry',
-      name: 'CityAndCountry',
-      component: CityAndCountry
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard
+    },
+    {
+      path: '/layout',
+      name: 'Layout',
+      component: Layout
+    },
+    {
+      path: '/country',
+      name: 'Country',
+      component: Country
+    },
+    {
+      path: '/city',
+      name: 'City',
+      component: City
     }
   ]
 });

@@ -1,10 +1,10 @@
 <template>
     <div class="sidebar" :style="{ width: sidebarWidth }">
-        <h1>
+        <h2>
             <span v-if="collapsed">
             </span>
-            <span v-else>Esso</span>
-        </h1>
+            <span v-else>👋 Welcome!</span>
+        </h2>
         
         <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
         <SidebarLink to="/login" icon="fa fa-sign-in">Login</SidebarLink>
@@ -14,7 +14,7 @@
         <span class="collapse-icon" 
               :class="{'rotate-180': collapsed }"
               @click="toggleSidebar">
-            <i class="fas fa-angle-double-left" />
+              <i class="fas fa-angle-double-left" />
         </span>
     </div>
 </template>
@@ -49,7 +49,7 @@ export default {
     top: 0;
     left: 0;
     bottom: 0;
-    padding: 0.5em;
+    padding: 2em;
     transition: 0.3s ease;
     display: flex;
     flex-direction: column;

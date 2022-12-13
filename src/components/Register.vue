@@ -49,10 +49,10 @@ export default{
                         if(response.data){
                             Swal.fire("Successfully registered")
                             .then(()=>{
-                                this.back();
+                                this.$router.push('/login');
                             });
                         }else{
-                            Swal.fire("Error: Something went wrong.(Do not forget that you cannot create an account with an existing email address!");
+                            Swal.fire("Error: Something went wrong.(You cannot create an account with an existing email address!");
                         }
                     })
                     .catch(error=> {
