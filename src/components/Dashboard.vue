@@ -2,22 +2,24 @@
     <div class="container">
     <Layout title="Dashboard"></Layout>
         <table>
-            <thead>
+            
                 <tr>
-                    <th>City Name |</th>                    
-                    <th>Country Id</th>
-                    <!-- <th>Country Id</th> -->
+                    <td>Country |</td>
+                    <td>City Name |</td>                    
+                    <td>Country Id</td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr v-for="city in cities" :key="city.Id">
-                    <td>{{city.name}}</td>
-                    <td>{{city.countryId}}</td>
+                
+                <tr v-for="country in countries" v-bind:key="country.id">
+                    <tr v-for="city in cities"  v-bind:key="city.id">
+                        <td>{{country.name}}</td>
+                        <td>{{city.name}}</td>
+                        <td>{{city.countryId}}</td>  
+                    </tr>
+                    
+                                     
                 </tr>
-                <!-- <tr v-for="country in Country" :key="country.countryId">
-                    <td>{{country.name}}</td>
-                </tr> -->
-            </tbody>
+                 
+            
         </table>
     
     </div>
@@ -31,7 +33,7 @@ export default({
     data(){
         return{
             cities:[],
-            // countries:[]
+            countries:[]
         }
     },
     components:{
@@ -39,7 +41,7 @@ export default({
     },
     async created(){
         await this.getCities();
-        // await this.getCountries();
+        await this.getCountries();
     },
     setup(){
 
@@ -55,10 +57,8 @@ export default({
         async getCities(){
             await this.$ajax.get("Cities/Get",this.getTokenConfig())
                 .then(response => {                    
-                    this.cities = response.data;   
-                    console.log(response.data);   
-                                 
-                    
+                    this.cities = response.data.data    
+                    console.log(response.data)                           
                 })
                 .catch(error => {
                     if(error.response){
@@ -66,17 +66,17 @@ export default({
                     }
                 });
         },
-        // async getCountries(){
-        //     await this.$ajax.get("Countries/Get")
-        //         .then(response => {
-        //             this.cities = response.data;
-        //         })
-        //         .catch(error => {
-        //             if(error.response){
-        //                 Swal.fire(error.response.data);
-        //             }
-        //         });
-        // },
+        async getCountries(){
+            await this.$ajax.get("Countries/Get",this.getTokenConfig())
+                .then(response => {
+                    this.countries = response.data.data;
+                })
+                .catch(error => {
+                    if(error.response){
+                        Swal.fire(error.response.data);
+                    }
+                });
+        },
     }
 })
 
