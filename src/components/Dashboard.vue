@@ -1,27 +1,26 @@
 <template>
     <div class="container">
     <Layout title="Dashboard"></Layout>
-        <table>
-            
+        <table class="table table-bordered table-striped">
+            <thead>
                 <tr>
-                    <td>Country |</td>
-                    <td>City Name |</td>                    
-                    <td>Country Id</td>
+                    <th scope="col">ID</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Country</th>
                 </tr>
+            </thead>
+            <tbody>
                 
-                <tr v-for="country in countries" v-bind:key="country.id">
-                    <tr v-for="city in cities"  v-bind:key="city.id">
-                        <td>{{country.name}}</td>
-                        <td>{{city.name}}</td>
-                        <td>{{city.countryId}}</td>  
-                    </tr>
-                    
-                                     
-                </tr>
-                 
-            
+                    <tr v-for="city in cities"  :key="city.id">
+                            <td>{{city.countryId}}</td>
+                            <td>{{city.name}}</td>
+                            <td>{{city.country}}</td>
+                            
+                        
+                    </tr>             
+                
+            </tbody>
         </table>
-    
     </div>
 </template>
 
@@ -32,8 +31,7 @@ import Layout from './Layout.vue'
 export default({
     data(){
         return{
-            cities:[],
-            countries:[]
+            cities:[]
         }
     },
     components:{
@@ -41,7 +39,6 @@ export default({
     },
     async created(){
         await this.getCities();
-        await this.getCountries();
     },
     setup(){
 
@@ -59,17 +56,6 @@ export default({
                 .then(response => {                    
                     this.cities = response.data.data    
                     console.log(response.data)                           
-                })
-                .catch(error => {
-                    if(error.response){
-                        Swal.fire(error.response.data);
-                    }
-                });
-        },
-        async getCountries(){
-            await this.$ajax.get("Countries/Get",this.getTokenConfig())
-                .then(response => {
-                    this.countries = response.data.data;
                 })
                 .catch(error => {
                     if(error.response){
