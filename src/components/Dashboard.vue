@@ -4,21 +4,19 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">Country Code</th>
                     <th scope="col">City</th>
                     <th scope="col">Country</th>
                 </tr>
             </thead>
-            <tbody>
-                
-                    <tr v-for="city in cities"  :key="city.id">
-                            <td>{{city.countryId}}</td>
-                            <td>{{city.name}}</td>
-                            <td>{{city.country}}</td>
-                            
-                        
-                    </tr>             
-                
+            <tbody>            
+                    <tr v-for="city in cities" v-bind:key="city.id">
+                        <th >{{ city.countryId }}</th>
+                        <th> {{ city.name  }}</th>
+                        <th v-for="country in countries.filter(country => country.id ===city.countryId)" v-bind:key="country.id">{{ country.name }}</th>
+                       
+                    </tr>
+                    
             </tbody>
         </table>
     </div>
@@ -31,7 +29,8 @@ import Layout from './Layout.vue'
 export default({
     data(){
         return{
-            cities:[]
+            cities:[],
+            countries:[]
         }
     },
     components:{
@@ -39,6 +38,7 @@ export default({
     },
     async created(){
         await this.getCities();
+        await this.getCountries();
     },
     setup(){
 
@@ -63,6 +63,17 @@ export default({
                     }
                 });
         },
+        async getCountries(){
+            await this.$ajax.get("Countries/Get",this.getTokenConfig())
+                .then(response => {
+                    this.countries = response.data.data
+                })
+                .catch(error => {
+                    if(error.response){
+                        Swal.fire(error.response.data);
+                    }
+                });
+        }
     }
 })
 

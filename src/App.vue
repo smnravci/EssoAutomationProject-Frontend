@@ -18,3 +18,8 @@ export default{
 }
 </script> 
 
+<style>
+  #app{
+    background-image: url("./assets/world.jpg");
+  }
+</style>
