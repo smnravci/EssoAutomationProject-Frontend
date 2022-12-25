@@ -8,7 +8,6 @@
         
         <SidebarLink to="/" icon="fas fa-home">Home</SidebarLink>
         <SidebarLink to="/login" icon="fa fa-sign-in">Login</SidebarLink>
-        <SidebarLink to="/register" icon="fa fa-registered">Register</SidebarLink>
         <SidebarLink to="/about" icon="fa fa-info-circle">About</SidebarLink>
 
         <span class="collapse-icon" 
@@ -33,7 +32,7 @@ export default {
 
 <style>
 :root {
-    --sidebar-bg-color: rgb(11, 2, 60);
+    --sidebar-bg-color: rgb(26, 15, 97);
     --sidebar-item-hover: rgb(147, 149, 152);
     --sidebar-item-active: rgb(48, 14, 148);
 }

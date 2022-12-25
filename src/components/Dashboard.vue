@@ -1,7 +1,12 @@
 <template>
     <div class="container">
-    <Layout title="Dashboard"></Layout>
-        <table class="table table-bordered table-striped">
+       
+        <table class="table table-hover table-primary">
+            <colgroup>
+                <col style="width: 60px">
+                <col style="width: 60px">
+                <col style="width: 60px">
+              </colgroup>
             <thead>
                 <tr>
                     <th scope="col">Country Code</th>
@@ -19,7 +24,9 @@
                     
             </tbody>
         </table>
+        <Layout title="Dashboard"></Layout>
     </div>
+    
 </template>
 
 <script>
@@ -81,9 +88,9 @@ export default({
 
 <style scoped>
 .container{
-    width: 30%;
-    height: -50px;
-    padding: 200px 10px 200px 20px;
+    width: 50%;
+    height: -10px;
+    padding: 180px 10px 180px 20px;
 }
 </style>
 
@@ -96,49 +103,3 @@ export default({
 
 
 
-
-
-<!-- <template>
-    <div  style="position: relative; /*or static*/;
-    width: 50%;
-    height: 800px;
-    margin: 0 auto">
-        <h3 class="d-flex justify-content-center" style="color:white">
-            Esso Otomation Project
-        </h3>
-        <h5 class="d-flex justify-content-center" style="color:white">
-            Cities and Countries
-        </h5>
-
-        <nav class="navbar navbar-expand-sm bg-light navbar-dark" style="position: relative; /*or static*/;
-        width: 50%;
-        padding-left: 100px;
-        margin: 0 auto">
-            <ul class="navbar-nav">
-                <li class="nav-item m-1">
-                    <router-link class="btn btn-light btn-outline-primary" to="/city">City</router-link>
-                </li>
-                <li class="nav-item m-1">
-                    <router-link class="btn btn-light btn-outline-primary" to="/country">Country</router-link>
-                </li>
-            </ul>
-        </nav>
-        <router-view></router-view>
-    </div>
-</template>
-
-<script>
-import { RouterLink, RouterView } from 'vue-router';
-
-export default {
-    component: {
-        RouterLink,
-        RouterView
-    },
-    data() {
-        return {
-
-        }
-    }
-}
-</script> -->

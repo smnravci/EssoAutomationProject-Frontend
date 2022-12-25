@@ -15,7 +15,8 @@
                     </label>
     
                 <div class="clearfix">
-                    <button class="button" @click="login()">Log in</button>
+                    <button class="button" @click="login()">Log in</button> 
+                    <button class="button" @click="register()">Register</button> 
                 </div>
             </div>
         </div>
@@ -34,6 +35,9 @@ export default{
         }
     },
     methods:{
+        register(){
+            this.$router.push("Users/Register");
+        },
         login(){
             if(this.checkValidation()){
                 this.$ajax.post("Users/Login", {Username:this.user.username, Password:this.user.password})

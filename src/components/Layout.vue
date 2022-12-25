@@ -26,5 +26,19 @@ export default({
 </script>
 
 <style scoped>
-
+    button{
+        background-color: rgb(26, 15, 97);
+        width: 20%;
+        color: rgb(254, 254, 254);
+        border: 2px black; 
+        border-radius: 30px;       
+        padding: 10px 20px;    
+        text-align: center;    
+        text-decoration: none;    
+        display: inline-block;    
+        font-size: 18px;  
+        margin: 90px 750px;    
+        cursor: pointer;
+        transition-duration: 0.3s;
+    }
 </style>
